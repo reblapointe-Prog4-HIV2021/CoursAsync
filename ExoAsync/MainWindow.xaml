@@ -7,6 +7,9 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Label Name="output" Content="Output" HorizontalAlignment="Left" VerticalAlignment="Top" Height="324" Width="484"/>
+        <Button Name="start" Content="Démarrer" HorizontalAlignment="Left" Margin="0,329,0,0" Width="484" Click="Start_Click"/>
+        <Label Name="etatPain" Content="État du pain" HorizontalAlignment="Left" VerticalAlignment="Top" Height="143" Width="349" Margin="443,158,0,0"/>
+        <Label Name="etatCasseTete" Content="État du casse-tête" HorizontalAlignment="Left" VerticalAlignment="Top" Height="143" Width="349" Margin="443,10,0,0"/>
     </Grid>
 </Window>
