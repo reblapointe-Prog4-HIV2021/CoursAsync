@@ -17,8 +17,6 @@ using System.Windows.Shapes;
 namespace ExoAsync
 {
     class Pain { }
-    class Tranche { }
-    class Collation { }
 
     /// <summary>
     /// Logique d'interaction pour MainWindow.xaml
@@ -35,29 +33,35 @@ namespace ExoAsync
         {
             start.IsEnabled = false;
 
-            output.Content = $"Je vais te préparer du pain 🍞 avec du beurre 🧀.{System.Environment.NewLine}";
+            output.Content += $"Je vais te préparer du pain 🍞 avec du beurre 🧀.{System.Environment.NewLine}";
 
             var faireDuPainTache = FaireDuPainAsync();
             var jeu = CasseTeteAsync();
+            //CasseTete();
 
             Pain pain = await faireDuPainTache;
             output.Content += "Je tranche le pain\n";
             etatPain.Content = "LE PAIN EST TRANCHÉ\n";
+
             output.Content += "Je beurre le pain\n";
             etatPain.Content = "LA TRANCHE EST BEURRÉE\n";
 
             output.Content += $"Voila du pain 🍞 avec du beurre 🧀, mon lapin 🐰!{System.Environment.NewLine}";
 
+            await jeu;
+            // Ranger le casse-tête
+
             start.IsEnabled = true;
         }
+
         private async Task<Pain> FaireDuPainAsync()
         {
             output.Content += "Je mélange les ingrédients\n";
 
             output.Content += "Je pétris la pâte\n";
-            Task leveeTask = LeverAsync();
+            Task leveeTask = LeverAsync(); // LA tache de levée est démarrée
 
-
+            output.Content += "Je sors le beurre\n";
             output.Content += "Je lave le bol\n";
             await leveeTask;
 
@@ -77,12 +81,12 @@ namespace ExoAsync
         private async Task LeverAsync()
         {
             etatPain.Content = "LA PÂTE LEVE\n";
-            await Task.Delay(5000);
+            await Task.Delay(10000);
         }
         private async Task CuireAsync()
         {
             etatPain.Content = "LA PÂTE CUIT\n";
-            await Task.Delay(2500);
+            await Task.Delay(5000);
         }
 
         private async Task CasseTeteAsync()
@@ -93,6 +97,15 @@ namespace ExoAsync
                 await Task.Delay(500);
             }
         }
-     
+
+        private void CasseTete()
+        {
+            for (int i = 0; i < 24; i++)
+            {
+                etatCasseTete.Content = $"{i + 1} morceaux sur {24}";
+                Thread.Sleep(500);
+            }
+        }
+
     }
 }
