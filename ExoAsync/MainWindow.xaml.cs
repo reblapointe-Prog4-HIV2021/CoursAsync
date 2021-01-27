@@ -35,7 +35,7 @@ namespace ExoAsync
         {
             start.IsEnabled = false;
 
-            output.Content = $"Je vais te préparer du pain 🍞 avec du beurre 🧀.{System.Environment.NewLine}";
+            output.Content += $"Je vais te préparer du pain 🍞 avec du beurre 🧀.{System.Environment.NewLine}";
 
             var faireDuPainTache = FaireDuPainAsync();
             var jeu = CasseTeteAsync();
@@ -43,6 +43,7 @@ namespace ExoAsync
             Pain pain = await faireDuPainTache;
             output.Content += "Je tranche le pain\n";
             etatPain.Content = "LE PAIN EST TRANCHÉ\n";
+
             output.Content += "Je beurre le pain\n";
             etatPain.Content = "LA TRANCHE EST BEURRÉE\n";
 
@@ -50,6 +51,7 @@ namespace ExoAsync
 
             start.IsEnabled = true;
         }
+
         private async Task<Pain> FaireDuPainAsync()
         {
             output.Content += "Je mélange les ingrédients\n";
