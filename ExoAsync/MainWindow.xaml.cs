@@ -61,7 +61,6 @@ namespace ExoAsync
             output.Content += "Je pétris la pâte\n";
             Task leveeTask = LeverAsync(); // LA tache de levée est démarrée
 
-            output.Content += "Je sors le beurre\n";
             output.Content += "Je lave le bol\n";
             await leveeTask;
 
@@ -83,6 +82,7 @@ namespace ExoAsync
             etatPain.Content = "LA PÂTE LEVE\n";
             await Task.Delay(10000);
         }
+
         private async Task CuireAsync()
         {
             etatPain.Content = "LA PÂTE CUIT\n";
@@ -93,7 +93,7 @@ namespace ExoAsync
         {
             for (int i = 0; i < 24; i++)
             {
-                etatCasseTete.Content =$"{i + 1} morceaux sur {24}";
+                etatCasseTete.Content = $"{i + 1} morceaux sur {24}";
                 await Task.Delay(500);
             }
         }
